@@ -30,8 +30,6 @@ partial class Form1
     private void InitializeComponent()
     {
         MenuStripItem = new System.Windows.Forms.MenuStrip();
-        DATA1 = new System.Windows.Forms.DataGridView();
-        DATA2 = new System.Windows.Forms.DataGridView();
         LabelName = new System.Windows.Forms.Label();
         panel1 = new System.Windows.Forms.Panel();
         CheckFemale = new System.Windows.Forms.CheckBox();
@@ -44,8 +42,7 @@ partial class Form1
         numericUpDown1 = new System.Windows.Forms.NumericUpDown();
         label2 = new System.Windows.Forms.Label();
         numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-        ((System.ComponentModel.ISupportInitialize)DATA1).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)DATA2).BeginInit();
+        button1 = new System.Windows.Forms.Button();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
@@ -59,24 +56,6 @@ partial class Form1
         MenuStripItem.Size = new System.Drawing.Size(800, 24);
         MenuStripItem.TabIndex = 0;
         MenuStripItem.Text = "menuStrip1";
-        // 
-        // DATA1
-        // 
-        DATA1.ColumnHeadersHeight = 29;
-        DATA1.Location = new System.Drawing.Point(318, 61);
-        DATA1.Name = "DATA1";
-        DATA1.RowHeadersWidth = 51;
-        DATA1.Size = new System.Drawing.Size(401, 161);
-        DATA1.TabIndex = 1;
-        // 
-        // DATA2
-        // 
-        DATA2.ColumnHeadersHeight = 29;
-        DATA2.Location = new System.Drawing.Point(318, 262);
-        DATA2.Name = "DATA2";
-        DATA2.RowHeadersWidth = 51;
-        DATA2.Size = new System.Drawing.Size(401, 163);
-        DATA2.TabIndex = 2;
         // 
         // LabelName
         // 
@@ -173,12 +152,23 @@ partial class Form1
         numericUpDown2.Size = new System.Drawing.Size(120, 27);
         numericUpDown2.TabIndex = 12;
         // 
+        // button1
+        // 
+        button1.Location = new System.Drawing.Point(69, 392);
+        button1.Name = "button1";
+        button1.Size = new System.Drawing.Size(93, 34);
+        button1.TabIndex = 13;
+        button1.Text = "Добавити";
+        button1.UseVisualStyleBackColor = true;
+        button1.Click += button1_Click;
+        // 
         // Form1
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         BackColor = System.Drawing.Color.DodgerBlue;
         ClientSize = new System.Drawing.Size(800, 450);
+        Controls.Add(button1);
         Controls.Add(numericUpDown2);
         Controls.Add(label2);
         Controls.Add(numericUpDown1);
@@ -189,20 +179,18 @@ partial class Form1
         Controls.Add(textBox1);
         Controls.Add(panel1);
         Controls.Add(LabelName);
-        Controls.Add(DATA2);
-        Controls.Add(DATA1);
         Controls.Add(MenuStripItem);
         MainMenuStrip = MenuStripItem;
         Text = "Вас вітає студент групи ПІ-232 Бабюк Віктор Олександрович";
         Load += Form1_Load;
-        ((System.ComponentModel.ISupportInitialize)DATA1).EndInit();
-        ((System.ComponentModel.ISupportInitialize)DATA2).EndInit();
         panel1.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
+
+    private System.Windows.Forms.Button button1;
 
     private System.Windows.Forms.TextBox textBox2;
     private System.Windows.Forms.Label LabelYear;
@@ -219,10 +207,6 @@ partial class Form1
     private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.CheckBox CheckMale;
     private System.Windows.Forms.CheckBox CheckFemale;
-
-    private System.Windows.Forms.DataGridView DATA2;
-
-    private System.Windows.Forms.DataGridView DATA1;
 
     private System.Windows.Forms.MenuStrip MenuStripItem;
 

@@ -14,3 +14,4 @@ D:\ООП 3 курс\Lab1 Csharp 07.09\obj\Debug\net8.0-windows\Lab1 Csharp 07.0
 D:\ООП 3 курс\Lab1 Csharp 07.09\obj\Debug\net8.0-windows\ref\Lab1 Csharp 07.09.dll
 D:\ООП 3 курс\Lab1 Csharp 07.09\obj\Debug\net8.0-windows\Lab1_Csharp_07._09.Form1.resources
 D:\ООП 3 курс\Lab1 Csharp 07.09\obj\Debug\net8.0-windows\Lab1 Csharp 07.09.csproj.GenerateResource.cache
+D:\ООП 3 курс\Lab1 Csharp 07.09\obj\Debug\net8.0-windows\Lab1 Csharp 07.09.sourcelink.json
