@@ -39,6 +39,22 @@ namespace Lab1_Csharp_07._09
             ToolStripMenuItem print = new ToolStripMenuItem("Вивести");
             ToolStripMenuItem clear = new ToolStripMenuItem("Очистити");
             ToolStripMenuItem find = new ToolStripMenuItem("Знайти");
+            ToolStripMenuItem operations = new ToolStripMenuItem("Операції");
+
+            ToolStripMenuItem equalsOp = new ToolStripMenuItem("Порівняти (==)");
+            ToolStripMenuItem addOp = new ToolStripMenuItem("Додати досвід (+)");
+            ToolStripMenuItem greaterOp = new ToolStripMenuItem("Порівняти за віком (>)");
+            ToolStripMenuItem lessOp = new ToolStripMenuItem("Порівняти за віком (<)");
+            ToolStripMenuItem incrementOp = new ToolStripMenuItem("Збільшити досвід (++)");
+            
+            equalsOp.Click += (s, ev) => PerformEqualsOperation();
+            addOp.Click += (s, ev) => PerformAddOperation();
+            greaterOp.Click += (s, ev) => PerformGreaterOperation();
+            lessOp.Click += (s, ev) => PerformLessOperation();
+            incrementOp.Click += (s, ev) => PerformIncrementOperation();
+            
+            operations.DropDownItems.AddRange(new ToolStripItem[] { equalsOp, addOp, greaterOp, lessOp, incrementOp });
+
             
             save.Click += (s, ev) => SaveToJson();
             print.Click += (s, ev) => LoadFromJson();
@@ -49,6 +65,7 @@ namespace Lab1_Csharp_07._09
             menu.Items.Add(print);
             menu.Items.Add(clear);
             menu.Items.Add(find);
+            menu.Items.Add(operations);
             
             this.MainMenuStrip = menu;
             this.Controls.Add(menu);
@@ -151,6 +168,101 @@ namespace Lab1_Csharp_07._09
             using (FindWorkerForm findForm = new FindWorkerForm(this))
             {
                 findForm.ShowDialog();
+            }
+        }
+        private bool GetSelectedWorkers(out Worker w1, out Worker w2)
+        {
+            w1 = null;
+            w2 = null;
+
+            if (DATA1.SelectedRows.Count != 2)
+            {
+                MessageBox.Show("Виберіть рівно два рядки для виконання операції!");
+                return false;
+            }
+
+            int index1 = DATA1.SelectedRows[0].Index;
+            int index2 = DATA1.SelectedRows[1].Index;
+
+            if (index1 >= 0 && index1 < ListFromFile.Count && index2 >= 0 && index2 < ListFromFile.Count)
+            {
+                w1 = ListFromFile[index1];
+                w2 = ListFromFile[index2];
+                return true;
+            }
+
+            MessageBox.Show("Помилка: Вибрані рядки некоректні!");
+            return false;
+        }
+        private bool GetSingleSelectedWorker(out Worker w, out int index)
+        {
+            w = null;
+            index = -1;
+
+            if (DATA1.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Виберіть рівно один рядок для виконання операції ++!");
+                return false;
+            }
+
+            index = DATA1.SelectedRows[0].Index;
+
+            if (index >= 0 && index < ListFromFile.Count)
+            {
+                w = ListFromFile[index];
+                return true;
+            }
+
+            MessageBox.Show("Помилка: Вибраний рядок некоректний!");
+            return false;
+        }
+
+        private void PerformEqualsOperation()
+        {
+            if (GetSelectedWorkers(out Worker w1, out Worker w2))
+            {
+                bool result = w1 == w2;
+                MessageBox.Show($"Працівники {(result ? "однакові" : "різні")} за ім'ям та посадою.");
+            }
+        }
+
+        private void PerformAddOperation()
+        {
+            if (GetSelectedWorkers(out Worker w1, out Worker w2))
+            {
+                Worker result = w1 + w2;
+                List<Worker> resultList = new List<Worker> { result };
+                UpdateDataGridView(DATA2, resultList);
+                MessageBox.Show($"Досвід об'єднано: {result.Experience} років.");
+            }
+        }
+
+        private void PerformGreaterOperation()
+        {
+            if (GetSelectedWorkers(out Worker w1, out Worker w2))
+            {
+                bool result = w1 > w2;
+                MessageBox.Show($"Працівник {w1.Name} {(result ? "старший" : "молодший або того ж віку")} за працівника {w2.Name}.");
+            }
+        }
+
+        private void PerformLessOperation()
+        {
+            if (GetSelectedWorkers(out Worker w1, out Worker w2))
+            {
+                bool result = w1 < w2;
+                MessageBox.Show($"Працівник {w1.Name} {(result ? "молодший" : "старший або того ж віку")} за працівника {w2.Name}.");
+            }
+        }
+
+        private void PerformIncrementOperation()
+        {
+            if (GetSingleSelectedWorker(out Worker w, out int index))
+            {
+                w++; 
+                ListFromFile[index] = w; 
+                UpdateDataGridView(DATA1, ListFromFile); 
+                MessageBox.Show($"Досвід працівника {w.Name} збільшено до {w.Experience} років.");
             }
         }
     }

@@ -43,6 +43,7 @@ partial class Form1
         label2 = new System.Windows.Forms.Label();
         numericUpDown2 = new System.Windows.Forms.NumericUpDown();
         button1 = new System.Windows.Forms.Button();
+        label3 = new System.Windows.Forms.Label();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
@@ -162,12 +163,23 @@ partial class Form1
         button1.UseVisualStyleBackColor = true;
         button1.Click += button1_Click;
         // 
+        // label3
+        // 
+        label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+        label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+        label3.Location = new System.Drawing.Point(28, 54);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(100, 36);
+        label3.TabIndex = 14;
+        label3.Text = "CADR";
+        // 
         // Form1
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         BackColor = System.Drawing.Color.DodgerBlue;
         ClientSize = new System.Drawing.Size(800, 450);
+        Controls.Add(label3);
         Controls.Add(button1);
         Controls.Add(numericUpDown2);
         Controls.Add(label2);
@@ -189,6 +201,8 @@ partial class Form1
         ResumeLayout(false);
         PerformLayout();
     }
+
+    private System.Windows.Forms.Label label3;
 
     private System.Windows.Forms.Button button1;
 
